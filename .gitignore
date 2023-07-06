@@ -1,52 +1,40 @@
-# Prerequisites
-*.d
+// Імпортуєм модулі
+#include <stdio.h>
+#include <stdlib.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+// Функція для пошуку дільників числа m
+int result(int m)
+{
+    int count = 0;
 
-# Linker output
-*.ilk
-*.map
-*.exp
+    // Умова щоб m був більше за 1 але меньше ніж 150
+    if (m < 1 || m > 150)
+        return 0;
 
-# Precompiled Headers
-*.gch
-*.pch
+    // Порівнюємо за формулою для пошуку дільників
+    for(int i = 1; i <= m; i++)
+    {
+        if(m % i == m / i)
+        {
+            count++; // Підраховуємо кількість дільників
+        }
+    }
+    return count;
+}
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+int main()
+{
+    // Створюємо змінні
+    int m;
+    int res = 0;
+    // Записуємо число
+    printf("Write a m numbers: ");
+    scanf("%d", &m);
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+    // Розраховуємо
+    res = result(m);
+    // Виводимо
+    printf("\nResult is: %d\n", res);
+    system("Pause"); // Для тих хто програмує на Sublime text
+    return 0;
+}
